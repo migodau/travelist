@@ -1,12 +1,17 @@
 import styled from 'styled-components';
+import { Button } from './Button';
 
 export function Card({ title, description, buttonLabel }) {
+    const handleButtonClick = () => {
+        console.log(`Card selected: ${title}`);
+    }
+    
     return (
         <StyledCard>
             <CardHeader>{ title }</CardHeader>
             <CardBody>{ description }</CardBody>
             <CardFooter>
-                <button>{buttonLabel}</button>
+                <Button label={buttonLabel} onClick={handleButtonClick}/>
             </CardFooter>
         </StyledCard>
     );
@@ -38,15 +43,4 @@ const CardBody = styled.div`
 
 const CardFooter = styled.div`
     padding: 0 16px 16px;
-    
-    button {
-        width: 100%;
-        background-color: #0277BD;
-        color: #fff;
-        border-radius: 5px;
-        border: none;
-        padding: 12px;
-        font-size: 16px;
-        font-weight: bold;
-    }
 `;

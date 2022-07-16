@@ -1,6 +1,12 @@
 import styled from 'styled-components';
+import { InputField } from './common.styled'
+import { Button } from './components/Button';
 
-export function NewTrip() {
+export function NewChecklist() {
+  const handleButtonClick = () => {
+    console.log('Creating...');
+  }
+
   return (
     <>
       <FormCard>
@@ -43,6 +49,11 @@ export function NewTrip() {
               </div>
             </InputField>
           </FieldGrid>
+          <FormFooter>
+            <ButtonWrapper>
+              <Button label="Create" onClick={handleButtonClick}/>
+            </ButtonWrapper>
+          </FormFooter>
         </form>
       </FormCard>
     </>
@@ -56,60 +67,17 @@ const FormCard = styled.div`
   padding: 0 32px 32px 32px;
 `;
 const FieldGrid = styled.div`
-  display: grid;
-  grid-template-columns: auto auto auto;
+  display: flex;
+  justify-content: space-between;
   gap: 24px;
 `;
 
-const InputField = styled.div`
+const FormFooter = styled.div`
   display: flex;
-  flex-direction: column;
-  margin-top: 32px;
+  justify-content: flex-end;
+  margin-top: 24px;
+`;
 
-  label {
-    font-size: 14px;
-    color: #424242;
-    margin-bottom: 12px;
-  }
-  
-  input {
-    border: none;
-    border-bottom: 1px solid #E0E0E0;
-    color: #212121;
-    font-size: 20px;
-    outline: none;
-    font-weight: 200;
-    max-width: 300px;
-  }
-  ::placeholder,::-ms-input-placeholder {
-    color: #757575;
-  }
-
-  select {
-    border: 1px solid #ccc;
-    padding: 8px;
-    outline: none;
-    font-weight: 200;
-    font-size: 18px;
-    appearance: none;
-    border-radius: 4px;
-    color: #424242;
-    min-width: 150px;
-  }
-
-  .select-box {
-    position: relative;
-    width: fit-content;
-    &::after {
-      content: '>';
-      color: #9E9E9E;
-      font-size: 17px;
-      transform: rotate(90deg);
-      right: 11px;
-      top: 8px;
-      padding: 0 0 2px;
-      position: absolute;
-      pointer-events: none;
-    }
-  }
+const ButtonWrapper= styled.div`
+  width: 180px;
 `;
