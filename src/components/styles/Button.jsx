@@ -1,15 +1,6 @@
 import styled from 'styled-components';
 
-export function Button({ type, label, onClick }) {
-    
-    return(
-        <StyledButton onClick={onClick}>
-            {label}
-        </StyledButton>
-    );
-}
-
-const StyledButton = styled.button`
+export const Button = styled.button`
     width: 100%;
     background-color: #0277BD;
     color: #fff;

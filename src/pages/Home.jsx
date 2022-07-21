@@ -1,14 +1,14 @@
 import styled from 'styled-components'
 import { Header } from '../components/Header'
-import { NewChecklist } from '../NewChecklist'
-import { PageWrapper } from '../common.styled'
+import { NewChecklist } from '../components/NewChecklist'
+import { PageContainer } from '../components/styles/PageContainer'
 import { Card } from '../components/Card'
 
 export function Home() {
     return (
         <>
         <Header/>
-        <PageWrapper>
+        <PageContainer>
         <h2>select a pre-defined set</h2>
         <CardsGrid>
           <Card 
@@ -21,7 +21,7 @@ export function Home() {
             description='Make sure you have all essencial thing you need to work from everywhere' 
             buttonLabel="Let's get work done" />
 
-          <Card      
+          <Card
             title='Winter' 
             description='Winter is coming, be prepared'
             buttonLabel="Let's freeze" />
@@ -30,7 +30,7 @@ export function Home() {
           <h2>or create a custom travel checklist</h2>
           <NewChecklist/>
         </PageSection>
-      </PageWrapper>
+      </PageContainer>
       </>
     );
 }

@@ -1,13 +1,13 @@
 import { Header } from '../components/Header'
-import { PageWrapper } from '../common.styled'
+import { PageContainer } from '../components/styles/PageContainer'
 
 export function Checklist() {
     return(
         <>
             <Header/>
-            <PageWrapper>
+            <PageContainer>
                 <h2>Checklist</h2>
-            </PageWrapper>
+            </PageContainer>
         </>
     );
 }
