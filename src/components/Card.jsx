@@ -1,5 +1,5 @@
 import { Button } from './styles/Button';
-import { StyledCard, CardHeader, CardBody, CardFooter } from './styles/StyledCard';
+import { StyledCard, CardHeader, CardBody, CardFooter } from './styles/Card.styled';
 
 export function Card({ title, description, buttonLabel }) {
     const handleButtonClick = () => {

@@ -1,18 +1,26 @@
 import styled from 'styled-components';
+import { useFormContext } from 'react-hook-form';
+import { FieldErrorMessage } from './styles/FieldErrorMessage';
 
-export function Select({ label, children }) {
+export function Select({ name, label, children }) {
+
+  const { register, formState: { errors } } = useFormContext();
+
   return (
     <>
       <SelectLabel>{label}
         <SelectBox>
-          <select id="weather">
+          <select {...register(name)} id="weather">
             {children}
           </select>
         </SelectBox>
+        <FieldErrorMessage>{errors[name]?.message}</FieldErrorMessage>
       </SelectLabel>
+      
     </>
   );
 }
+
 const SelectLabel = styled.label`
     font-size: 14px;
     color: #424242;

@@ -1,30 +1,46 @@
+import { FormProvider, useForm } from 'react-hook-form';
 import styled from 'styled-components';
-import { Input } from './styles/Input';
-import { Button } from './styles/Button';
+import { Form } from './Form';
+import { Input } from './Input';
 import { Select } from './Select';
+import { Button } from './styles/Button';
+import { yupResolver } from '@hookform/resolvers/yup';
+import * as yup from "yup";
+
+const schema = yup.object({
+  name: yup.string().required('fill in the name').min(3),
+  purpose: yup.string().required('select the purpose'),
+  environment: yup.string().required('select the environment'),
+  weather: yup.string().required('select the weather'),
+}).required();
 
 export function NewChecklist() {
-  const handleButtonClick = () => {
-    console.log('Creating...');
+
+
+  const methods = useForm({ resolver: yupResolver(schema)});
+
+  const handleSubmit = (data) => {
+    console.log('Creating...', data);
   }
 
   return (
-      <Form>
-        <Input id="name" placeholder="Type your trip name" type="text"/>
+    <FormProvider { ...methods }>
+      <Form onSubmit={handleSubmit}>
+        <Input name="name" placeholder="Type your trip name" />
 
         <FieldGrid>
-          <Select label="Purpose">
+          <Select name="purpose" label="Purpose">
             <option value=""></option>
             <option value="work">Work</option>
             <option value="leisure">Leisure</option>
           </Select>
-          <Select label="Environment">
+          <Select name="environment" label="Environment">
             <option value=""></option>
             <option value="beach">Beach</option>
             <option value="mountains">Mountains</option>
             <option value="city">City</option>
           </Select>
-          <Select label="Weather">
+          <Select name="weather" label="Weather">
             <option value=""></option>
             <option value="snowy">Snowy</option>
             <option value="cold">Cold</option>
@@ -35,19 +51,13 @@ export function NewChecklist() {
 
         <FormFooter>
           <ButtonWrapper>
-            <Button onClick={handleButtonClick}>Create</Button>
+            <Button type="submit">Create</Button>
           </ButtonWrapper>
         </FormFooter>
       </Form>
+    </FormProvider>
   );
 }
-
-const Form = styled.div`
-  border-radius: 5px;
-  box-shadow: 0 .125rem .25rem rgba(0,0,0,.075)!important;
-  border: 1px solid #ccc;
-  padding: 0 32px 32px 32px;
-`;
 
 const FieldGrid = styled.div`
   display: flex;
